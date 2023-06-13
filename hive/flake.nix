@@ -55,6 +55,20 @@
               # { publicKey = ""; allowedIPs = [ "" ]; }
             ];
           };
+
+          services.k3s = {
+            enable = true;
+            role = "server";
+            extraFlags = ''
+              --node-external-ip 167.235.131.220 \
+              --node-label='svccontroller.k3s.cattle.io/enablelb=true' \
+              --kubelet-arg "--node-ip=::" \
+              --cluster-cidr 10.42.0.0/16 \
+              --service-cidr 10.43.0.0/16 \
+              --disable traefik \
+              --flannel-iface=wg0
+            '';
+          };
         };
       };
     };
