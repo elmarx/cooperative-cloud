@@ -5,6 +5,7 @@ provider "registry.terraform.io/mecodia/pass" {
   version     = "3.1.0"
   constraints = "3.1.0"
   hashes = [
+    "h1:aWjAmEGZEydC8f4iduMwuFhuj8IDMvidiQfbeNOfMRw=",
     "h1:kyFSE+h7PVSvQXWmEdw6KTQP29JF+t+oJgNx0YUJhB0=",
     "zh:30129159550a34f4fbeec90f344d5aa23e1ec71ea3322ab230e48db83d25d4fe",
     "zh:5b81908b42abbbcc8a1ca043d9b053a1d2679af9296801e33bf378c6bb37a9ca",
@@ -28,6 +29,7 @@ provider "registry.terraform.io/pan-net/powerdns" {
   version     = "1.5.0"
   constraints = "1.5.0"
   hashes = [
+    "h1:bsz18KLloevlTZkXwZr8u0sFCZKcOYyts2RaWkV6YNc=",
     "h1:oMzrqQGFY88Cwx06YkFHP6io3jow/22FRZkeK0UZtGY=",
     "zh:02d1a87c28635779f66d1dcf165b5f16530f809deb6c71c35c3e58d715a88bf4",
     "zh:1285a419c7fd2947f891771bd77d2f6e7dd0cb00621c547b6993947085616009",
