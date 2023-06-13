@@ -1,5 +1,5 @@
 locals {
-  modules = ["tf-cloud", "server", "dns"]
+  modules = ["tf-cloud", "server", "dns", "kubernetes"]
 }
 
 resource "tfe_workspace" "this" {
