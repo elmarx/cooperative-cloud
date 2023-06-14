@@ -42,10 +42,13 @@
 
           ];
 
-          networking.firewall.enable = false;
-          networking.firewall.allowedUDPPorts = [ 51820 6443 80 443 ];
+          # networking.firewall.enable = false;
+          networking.firewall.allowedUDPPorts = [
+            51820
+            8472 # flannel
+          ];
           networking.firewall.allowedTCPPorts = [
-            6443 # control pane connection
+            6443 # control plane connection
             10250 # metrics endpoint
             80 # http
             443 # https
@@ -83,12 +86,12 @@
             role = "server";
             extraFlags = ''
               --node-ip 10.0.0.1 \
-              --node-external-ip 167.235.131.220,2a01:4f8:c2c:cb65::1 \
+              --node-external-ip 167.235.131.220 \
               --node-label='svccontroller.k3s.cattle.io/enablelb=true' \
               --cluster-cidr 10.42.0.0/16 \
               --service-cidr 10.43.0.0/16 \
               --disable traefik \
-              --flannel-iface=wg0
+              --flannel-iface wg0
             '';
           };
         };
