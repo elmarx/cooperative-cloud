@@ -11,9 +11,12 @@ You need to provide two things: one public key, and an ip address, both need to 
 - add an entry to our [IP address registry](https://docs.google.com/spreadsheets/d/1E4YsUCuU2ez75bOh6kxMwjYjjgna-3vh7K2YFoa6A8g/edit#gid=0), i.e.: choose a free ip from the block 10.0.0.1-10.0.0.254 (i.e.: 10.0.0.0/24) 
   
 
+## IF YOU ALREADY HAVE A NODE RUNNING, UNINSTALL IT VIA /usr/local/bin/k3s-agent-uninstall.sh !!!
 #### Configuration
 
 Setup the wireguard configuration. There are multiple ways to do it, this is the `wg-quick` method.         
+
+For that, you will need to create /etc/wireguard/wg0.conf, replace your IP Address and private key:
 
 ```
 [Interface]
@@ -27,10 +30,32 @@ AllowedIPs = 10.0.0.1/24
 Endpoint = 167.235.131.220:51820       
 ```
 
+Then you do 
+```
+$ wg-quick up wg0
+```
+
+and wireguard will create routing entries etc for you. _After_ pinging 10.0.0.1 the connection should be established, which you can verify by
+
+```
+root@rpi3:~# wg show
+interface: wg0
+  public key: qw5tOwhHyHdKqWNv6ReVl7U4SIAY2Zt8vAJd5H8q/XY=
+  private key: (hidden)
+  listening port: 51820
+
+peer: 60dVYunQRvc55FxMoOdnu9vqSl8Rb4FXAnpUNiyR7i4=
+  endpoint: 167.235.131.220:51820
+  allowed ips: 10.0.0.0/12
+  latest handshake: 1 minute, 29 seconds ago
+  transfer: 1.43 MiB received, 7.18 MiB sent
+```
+
+
 #### Checkpoint
 
 - you should be able to ping 10.0.0.1
-- you should be able to ping any other node (look at the sheet to find available nodes, the kenny, phillip and bebe* nodes should be up most of the time)
+- you should be able to ping any other node (look at the sheet to find available node ips, the kenny, phillip and bebe* nodes should be up most of the time)
           
 #### Pitfalls
 
