@@ -102,6 +102,6 @@ To install, follow the instructions [here](https://github.com/VictoriaMetrics/he
 In particular, install Helm the way the link indicates; trying to shortcut the process and installing Helm via `snap` leads to an incompatible
 version which can't handle the Helm chart involved.
 
-The [https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/values.yaml](Helm chart provided) needed a little tweaking for our purposes; the config file in question may be found in `modules/victoriametrics/values.yaml`.
+The [Helm chart provided](https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/values.yaml) needed a little tweaking for our purposes; the config file in question may be found in `modules/victoriametrics/values.yaml`.
 
 

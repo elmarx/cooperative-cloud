@@ -1,6 +1,6 @@
 ## Victoria Metrics
 
-As described in the top-level README, this is a tweaked version of the [https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/values.yaml](Helm chart provided by VictoriaMetrics).  To be specific, the following were changed:
+As described in the top-level README, this is a tweaked version of the [Helm chart provided by Victoria Metrics](https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/values.yaml).  To be specific, the following were changed:
 
 * Ingress was enabled for Grafana
 * The `annotations` section of this Ingress's config was set to `cert-manager.io/cluster-issuer: letsencrypt`.
