@@ -91,3 +91,17 @@ curl -sfL https://get.k3s.io | K3S_URL="https://node0.kooperative.cloud:6443" K3
 - your node should show up here: `KUBECONFIG=~/k3s.yaml kubectl get nodes`
 - the internal and external ip address of your node should match the wg0-ip-address: `KUBECONFIG=~/k3s.yaml kubectl describe node $MY_NODE_NAME`
 - run a shell and ping other pods: `KUBECONFIG=~/k3s.yaml kubectl run test-my-node --rm -i --tty --image wbitt/network-multitool --overrides='{"spec": { "nodeSelector": {"kubernetes.io/hostname": "$MY_NODE_NAME"}}}' -- bash`
+
+## Grafana dashboards
+
+We set up some Grafana dashboards to report on the state of the cluster.  We did this by using Helm to install
+Victoria Metrics, which (unlike other installation methods) installs all the components needed, including Prometheus Node Exporter
+and Grafana, and sets up the dashboards for us.
+
+To install, follow the instructions [here](https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/README.md).
+In particular, install Helm the way the link indicates; trying to shortcut the process and installing Helm via `snap` leads to an incompatible
+version which can't handle the Helm chart involved.
+
+The [https://github.com/VictoriaMetrics/helm-charts/blob/master/charts/victoria-metrics-k8s-stack/values.yaml](Helm chart provided) needed a little tweaking for our purposes; the config file in question may be found in `modules/victoriametrics/values.yaml`.
+
+
